@@ -16,4 +16,4 @@ spec:
     spec:
       containers:
       - name: load-service
-        image: kritid9/load-testing:v1
+        image: kritid9/load-testing:v2
