@@ -1,17 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: infinite-calls
+  name: load-service
   labels:
-    app: infinite-calls
+    app: load-service
 spec:
- template:
-  metadata:
-   name: infinte-calls
-  specs:
-   containers:
-    - name: infinte-call-container
-      image: kritid9/load-testing:v1
-  
- replicas: 3
- 
+  replicas: 10
+  selector:
+    matchLabels:
+      app: load-service
+  template:
+    metadata:
+      labels:
+        app: load-service
+    spec:
+      containers:
+      - name: load-service
+        image: kritid9/load-testing:v1
